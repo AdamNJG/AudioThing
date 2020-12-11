@@ -15,7 +15,9 @@ public class Recording extends Audio{
 
             if (!AudioSystem.isLineSupported(info)) {
                 System.out.println("Line not supported");
-                System.exit(0);
+                Gui.recButton.setText("No Line");
+                Gui.recButton.setEnabled(false);
+                Gui.saveButton.setEnabled(false);
             }
             line = (TargetDataLine) AudioSystem.getLine(info);
             line.open(getAudioFormat());

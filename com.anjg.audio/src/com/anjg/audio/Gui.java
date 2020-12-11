@@ -19,9 +19,9 @@ public class Gui{
     final String LOAD = "Load";
 
     boolean isPlaying = false;
-    JButton recButton;
+    static JButton recButton;
     JButton playButton;
-    JButton saveButton;
+    static JButton saveButton;
     JButton sendButton;
     JButton connectButton;
     JButton hostButton;
@@ -281,6 +281,7 @@ public class Gui{
     public class LoadListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e){
+            saveButton.setEnabled(true);
             FileLoad fl = new FileLoad();
             fl.start();
         }

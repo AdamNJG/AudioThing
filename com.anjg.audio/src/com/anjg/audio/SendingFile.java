@@ -25,6 +25,7 @@ public class SendingFile extends Thread{
                     Network.sock.write(buff);
                     buff.clear();
                 }
+                Network.sock.shutdownOutput();
             }catch(IOException ex){ex.printStackTrace();}
         }
 
@@ -34,13 +35,14 @@ public class SendingFile extends Thread{
             FileChannel writeChannel = writer.getChannel()
             ){
                 ByteBuffer buff = ByteBuffer.allocate(1024);
-
                 while(Network.sock.read(buff) > 0){
                     buff.flip();
                     writeChannel.write(buff);
                     buff.clear();
                 }
+                Network.sock.shutdownInput();
             }catch(IOException ex){ex.printStackTrace();}
+            Gui.loadBox.addItem("Received");
         }
 
 
